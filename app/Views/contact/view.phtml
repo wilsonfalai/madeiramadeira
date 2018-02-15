@@ -1,0 +1,21 @@
+
+<h1><?= $this->view->contact->name; ?></h1>
+<p><a href="/contact/update/<?= $this->view->contact->id ?>"  class="btn btn-primary btn-sm">Editar</a></p>
+
+<table class="table">
+    <thead class="">
+    <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->view->contact as $key => $attr) : ?>
+        <tr>
+            <th scope="row"><?= $key ?></th>
+            <td><?= $attr?></td>
+        </tr>
+    <?php endforeach; ?>
+
+    </tbody>
+</table>

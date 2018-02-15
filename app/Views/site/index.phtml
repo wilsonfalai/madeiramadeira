@@ -1,0 +1,86 @@
+<style>
+ .card{
+     margin-bottom: 20px;
+ }
+    .contact #contact-name{
+        height: 40px;
+    }
+
+ @media (max-width: 575.98px) {
+    .jumbotron .title{
+        font-size: 38px;
+    }
+
+     .calltoaction {
+         display: block !important;
+         width: 100% !important;
+     }
+
+     .contact #contact-name{
+         font-size: 18px;
+         font-weight: bolder;
+     }
+
+     .card-body{
+         padding-left: .5rem!important;
+         padding-right: .5rem!important;
+     }
+
+     .card .btn-vd{
+         display: block !important;
+         width: 100% !important;
+     }
+
+ }
+
+ @media (max-width: 767.98px) {
+
+ }
+
+
+ @media (max-width: 991.98px) {
+
+ }
+
+
+ @media (max-width: 1199.98px) {
+
+ }
+
+</style>
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1 class="title">Seja bem vindo!</h1>
+        <p class="lead">Aqui você irá encontrar todos os médicos que atendem pelos nossos planos</p>
+        <hr class="my-4">
+
+        <p class="lead">
+            <a class="btn btn-primary btn-lg calltoaction" href="#" role="button">Contrate Agora</a>
+            <p>Ainda não é nosso cliente?</p>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <?php foreach ($this->view->contacts as $c): ?>
+            <div class="col-md-3 col-sm-4 col-6 pl-1 pr-1">
+                <div class="card contact">
+                    <img class="card-img-top" src="http://api.randomuser.me/portraits/men/49.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 id="contact-name"><?= $c->name ?></h5>
+                        <p class="card-text">
+                            <span id="contact-city"><?= $c->city ?></span> - <span id="contact-state"><?= $c->state ?></span>
+                            <br>
+                            <span id="contact-phone"><?= $c->phone ?></span>
+                            <br>
+                            <span id="contact-email"><?= $c->email ?></span>
+                            <br>
+                        </p>
+                        <a href="/site/view/<?= $c->id; ?>" class="btn btn-primary btn-vd">Ver detalhes</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

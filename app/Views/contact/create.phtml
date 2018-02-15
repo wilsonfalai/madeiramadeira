@@ -1,0 +1,111 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Library</li>
+    </ol>
+</nav>
+
+<?php if($this->view->error) : ?>
+    <?php foreach ($this->view->error as $error): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $error ?>
+        </div>
+    <?php endforeach;?>
+<?php endif; ?>
+
+<?php if($this->view->validation) : ?>
+    <?php foreach ($this->view->validation[0] as $v): ?>
+        <div class="alert alert-danger" role="alert">
+            Validação: <?= $v ?>
+        </div>
+    <?php endforeach;?>
+<?php endif; ?>
+
+<h1>Novo Contato</h1>
+
+<div class="row">
+    <?php $this->renderView('alerts/_success'); ?>
+    <?php $this->renderView('alerts/_errors') ?>
+</div>
+
+<form action="/contact/create" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input type="input" id="name" name="name"  class="form-control"
+                       placeholder="Nome">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" novalidate placeholder="Email">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="input" class="form-control" id="phone" name="phone" required minlength="11"
+                       placeholder="Telefone">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="postalcode">Cep</label>
+                <input type="input" class="form-control" id="postal_code" name="postal_code" placeholder="Cep">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="input" class="form-control" id="city" name="city" placeholder="Cidade">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="estate">UF</label>
+                <select class="form-control" id="state" name="state">
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="ES" >Espirito Santo</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="street">Logradouro</label>
+                <input type="input" class="form-control" id="street" name="street" placeholder="Logradouro">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="number">Número</label>
+                <input type="input" class="form-control" id="number" name="number" placeholder="Número">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="neighbor">Bairro</label>
+                <input type="input" class="form-control" id="neighbor" name="neighbor" placeholder="Bairro">
+            </div>
+        </div>
+
+
+
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+
+
+    </div>
+</form>

@@ -1,0 +1,82 @@
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    <h1 class="h2">Dashboard</h1>
+
+</div>
+
+<canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+
+<!-- Graphs -->
+<script src="/assets/js/chart.min.js"></script>
+<script>
+
+    var cidades = [];
+    var total = [];
+
+    <?php foreach($this->view->data as $key => $value): ?>
+        cidades.push('<?php echo $value->city; ?>');
+        total.push('<?php echo $value->total; ?>');
+    <?php endforeach; ?>
+
+    console.log(total);
+    console.log(cidades);
+
+
+    var ctx = document.getElementById("myChart");
+
+    var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: cidades,
+            datasets: [
+                {
+                    label: "Quantidade Médicos por cidade",
+                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                    data: total
+                }
+            ]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Número de médicos por cidade'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+
+    });
+
+    /*var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{
+                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                lineTension: 0,
+                backgroundColor: 'transparent',
+                borderColor: '#007bff',
+                borderWidth: 4,
+                pointBackgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            },
+            legend: {
+                display: false,
+            }
+        }
+    });*/
+</script>
